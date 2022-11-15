@@ -14,13 +14,13 @@ Ensuite nous allons devoir build une image ic-webapp avec des paramètres qui no
 
 
 
-FROM python:3.6-alpine \n
-run  pip install flask==1.1.2\n
-ADD . /opt/ \n
-WORKDIR /opt \n
-EXPOSE 8080 \n
-VOLUME /opt/data \n
-ENTRYPOINT ["python","./app.py"] \n
+FROM python:3.6-alpine \
+run  pip install flask==1.1.2\
+ADD . /opt/ \
+WORKDIR /opt \
+EXPOSE 8080 \
+VOLUME /opt/data \
+ENTRYPOINT ["python","./app.py"] \
 
 
 Il nous suffit de faire la commande build pour faire notre image.
