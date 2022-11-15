@@ -6,15 +6,15 @@ SIMON MELONI | GREGOIRE ACQUADRO | SIMON CORREIA
 
 Tout d'abord nous allons installer docker
 ```
-**apt-get install docker.io**
+apt-get install docker.io
 ```
 Et nous allons aussi cloner le git du projet
 ```
-**git clone https://github.com/eazytraining/docker-exams-1.git**
+git clone https://github.com/eazytraining/docker-exams-1.git
 ```
 Durant ce projet nous travaillons pour l'entreprise IC-GROUP, la première étape sera donc de créer le network :
 ```
-**docker network create IC-GROUP**
+docker network create IC-GROUP
 ```
 ![image](https://user-images.githubusercontent.com/74649986/201877594-128e9c73-bc0b-41ac-ac1a-be20f64412d7.png)
 
@@ -33,7 +33,7 @@ ENTRYPOINT ["python","./docker-exams-1/app.py"]
 
 Il nous suffit de faire la commande build pour faire notre image.
 ```
-**docker build -t ic-webapp .**
+docker build -t ic-webapp .
 ```
 Et on voit que l’image a bien été créée.
 
@@ -42,7 +42,7 @@ Et on voit que l’image a bien été créée.
 
 Pour pouvoir accéder à notre page, il nous faut un container, c'est ce qu'on fait avec un docker run, en indiquant le port voulu, le nom du network et l'image.
 ```
-**docker run --network=IC-GROUP -p 8080:80 ic-webapp**
+docker run --network=IC-GROUP -p 8080:80 ic-webapp
 ```
 ![image](https://user-images.githubusercontent.com/74649986/201880058-697b6e51-60c7-4fda-8062-9f9c1eb51aac.png)
 
@@ -51,13 +51,13 @@ Pour pouvoir accéder à notre page, il nous faut un container, c'est ce qu'on f
 ## 2/ Docker Registry
 On crée notre premier registre qu'on appelera "registry-ic" et sur le port 8081:80 : 	 	 		
 ```
-**docker run -d -p 8081:5000 --net IC-GROUP --name registry-ic2 registry:2**
+docker run -d -p 8081:5000 --net IC-GROUP --name registry-ic2 registry:2
 ```
 ![image](https://user-images.githubusercontent.com/74649986/201880378-1a0101d6-62c1-49be-a05e-fbf037749403.png)
 
 Pour y accéder facilement on ajoute une interface web grâce à la commande qu'on nous a fournit
 ```
-**docker run -d --net IC-GROUP -p 8082:80 -e REGISTRY_URL=http://registry-ic2:5000 -e DELETE_IMAGES=true -e REGISTRY_TITLE="IC REGISTRY" joxit/docker-registry-ui:static**
+docker run -d --net IC-GROUP -p 8082:80 -e REGISTRY_URL=http://registry-ic2:5000 -e DELETE_IMAGES=true -e REGISTRY_TITLE="IC REGISTRY" joxit/docker-registry-ui:static
 ```
 ![image](https://user-images.githubusercontent.com/74649986/201880636-9929c639-3542-4138-9a68-51b3c5d2ae3c.png)
 
@@ -67,7 +67,7 @@ Pour y accéder facilement on ajoute une interface web grâce à la commande qu'
 
 On se login au dockerhub avant de pouvoir push
 ```
-**docker login**
+docker login
 ```
 
 Enfin on peut push, en commençant part tag puis docker push
