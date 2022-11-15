@@ -51,13 +51,13 @@ Pour pouvoir accéder à notre page, il nous faut un container, c'est ce qu'on f
 ## 2/ Docker Registry
 On crée notre premier registre qu'on appelera "registry-ic" et sur le port 8081:80 : 	 	 		
 
-**docker run -d -p 8081:80 --net IC-GROUP --name registry-ic registry:2**
+**docker run -d -p 8081:5000 --net IC-GROUP --name registry-ic2 registry:2**
 
 ![image](https://user-images.githubusercontent.com/74649986/201880378-1a0101d6-62c1-49be-a05e-fbf037749403.png)
 
 Pour y accéder facilement on ajoute une interface web grâce à la commande qu'on nous a fournit
 
-**docker run -d --net IC-GROUP -p 8082:80 -e REGISTRY_URL=http://registry-ic:80 -e DELETE_IMAGES=true -e REGISTRY_TITLE="IC REGISTRY" joxit/docker-registry-ui:static**
+**docker run -d --net IC-GROUP -p 8082:80 -e REGISTRY_URL=http://registry-ic2:5000 -e DELETE_IMAGES=true -e REGISTRY_TITLE="IC REGISTRY" joxit/docker-registry-ui:static**
 
 ![image](https://user-images.githubusercontent.com/74649986/201880636-9929c639-3542-4138-9a68-51b3c5d2ae3c.png)
 
