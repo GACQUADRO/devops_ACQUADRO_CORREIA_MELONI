@@ -88,50 +88,50 @@ Docker-compose.yml:
 
 version: '3.3'\
 services:\
-    pgadmin:
-        container_name: pgadmin
-        image: dpage/pgadmin4
-        networks:
-            - IC-GROUP
+    pgadmin: \
+        container_name: pgadmin\
+        image: dpage/pgadmin4\
+        networks:\
+            - IC-GROUP\
+        environment:\
+            - 'PGADMIN_DEFAULT_EMAIL=odoo@eazytraining.fr'\
+            - 'PGADMIN_DEFAULT_PASSWORD=odoo_pgadmin_password'\
+        ports:\
+            - "5050:80"\
+        volumes:\
+            - ${PWD}/servers.json:/pgadmin4/servers.json\
+            - 'pgadmin_data:/var/lib/pgadmin'\
+    ic-webapp:\
+        container_name: ic-webapp\
+        ports:\
+            - "8080:8080"\
         environment:
-            - 'PGADMIN_DEFAULT_EMAIL=odoo@eazytraining.fr'
-            - 'PGADMIN_DEFAULT_PASSWORD=odoo_pgadmin_password'
-        ports:
-            - "5050:80"
-        volumes:
-            - ${PWD}/servers.json:/pgadmin4/servers.json
-            - 'pgadmin_data:/var/lib/pgadmin'
-    ic-webapp:
-        container_name: ic-webapp
-        ports:
-            - "8080:8080"
-        environment:
-            - "ODOO_URL=http://localhost:8069/"
-            - "PGADMIN_URL=http://localhost:5050/"
-        image: 'simon6892/test-ic-webapp:version'
-        networks:
-            - IC-GROUP
-    postgres:
-        environment:
-            - POSTGRES_USER=odoo_user
-            - POSTGRES_PASSWORD=odoo_password
-            - POSTGRES_DB=postgres
-        networks:
-            - IC-GROUP
-        volumes:
-            - 'pgdata:/var/lib/postgresql/data'
-        container_name: postgres
-        image: 'postgres:10'
-        ports:
-            - '5432:5432'
-    odoo:
-        depends_on:
-            - postgres
-        ports:
-            - '8069:8069'
-        container_name: odoo
-        networks:
-            - IC-GROUP
+            - "ODOO_URL=http://localhost:8069/"\
+            - "PGADMIN_URL=http://localhost:5050/"\
+        image: 'simon6892/test-ic-webapp:version'\
+        networks:\
+            - IC-GROUP\
+    postgres:\
+        environment:\
+            - POSTGRES_USER=odoo_user\
+            - POSTGRES_PASSWORD=odoo_password\
+            - POSTGRES_DB=postgres\
+        networks:\
+            - IC-GROUP\
+        volumes:\
+            - 'pgdata:/var/lib/postgresql/data'\
+        container_name: postgres\
+        image: 'postgres:10'\
+        ports:\
+            - '5432:5432'\
+    odoo:\
+        depends_on:\
+            - postgres\
+        ports:\
+            - '8069:8069'\
+        container_name: odoo\
+        networks:\
+            - IC-GROUP\
         volumes:
             - '/data_docker/config:/etc/odoo'
             - '/data_docker/addons:/mnt/extra-addons'
