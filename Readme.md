@@ -1,5 +1,7 @@
 #   RAPPORT DEVOPS
 
+SIMON MELONI | GREGOIRE ACQUADRO | SIMON CORREIA
+
 ## 1/ Conteneurisation de l’application web 
 
 Durant ce projet nous travaillons pour l'entreprise IC-GROUP, la première étape sera donc de créer le network :
