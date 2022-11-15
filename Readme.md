@@ -81,7 +81,7 @@ On va sur docker hub pour vérifier que nous avons bien push, et on constate que
 ## 3/ docker-compose
 
 On crée le fichier docker compose : \
-nano Docker-compse.yml\
+nano Docker-compse.yml
 
 Puis on y met les fichiers que l’on veut:\
 Docker-compose.yml:
