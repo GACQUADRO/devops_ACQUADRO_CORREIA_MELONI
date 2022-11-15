@@ -21,7 +21,7 @@ Durant ce projet nous travaillons pour l'entreprise IC-GROUP, la première étap
 Ensuite nous allons devoir build une image ic-webapp avec des paramètres qui nous été donnés, pour se faire nous allons faire une fichier dockerfile adapté :
 
 
-
+```
 FROM python:3.6-alpine \
 run  pip install flask==1.1.2\
 ADD . /opt/ \
