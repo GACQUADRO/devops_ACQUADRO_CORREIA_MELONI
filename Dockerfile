@@ -4,4 +4,4 @@ ADD . /opt/
 WORKDIR /opt
 EXPOSE 8080
 VOLUME /opt/data
-ENTRYPOINT ["python","./app.py"]
+ENTRYPOINT ["python","./docker-exams-1/app.py"]
