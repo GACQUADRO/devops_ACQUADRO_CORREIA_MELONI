@@ -28,8 +28,8 @@ ADD . /opt/ \
 WORKDIR /opt \
 EXPOSE 8080 \
 VOLUME /opt/data \
-ENTRYPOINT ["python","./docker-exams-1/app.py"]  ```
-
+ENTRYPOINT ["python","./docker-exams-1/app.py"]  
+```
 
 Il nous suffit de faire la commande build pour faire notre image.
 
