@@ -28,7 +28,7 @@ ADD . /opt/ \
 WORKDIR /opt \
 EXPOSE 8080 \
 VOLUME /opt/data \
-ENTRYPOINT ["python","./app.py"] 
+ENTRYPOINT ["python","./docker-exams-1/app.py"] 
 
 
 Il nous suffit de faire la commande build pour faire notre image.
@@ -65,6 +65,11 @@ Pour y accéder facilement on ajoute une interface web grâce à la commande qu'
 
 ![image](https://user-images.githubusercontent.com/74649986/201880843-a763f1be-e3dc-4d54-9d51-97c43dd503fe.png)
 
+On se login au dockerhub avant de pouvoir push
+
+**docker login**
+
+
 Enfin on peut push, en commencant part tag puis docker push
 
 ![image](https://user-images.githubusercontent.com/74649986/201880927-cf2a2717-07c8-4dda-a5e3-28a606305e00.png)
@@ -74,3 +79,72 @@ On va sur docker hub pour vérifier que nous avons bien push, et on constate que
 ![image](https://user-images.githubusercontent.com/74649986/201881024-7b87e056-4580-4ec9-9ee3-6701ef8abc57.png)
 
 ## 3/ docker-compose
+
+Docker-compose.yml:
+
+version: '3'
+services:
+	web:
+    image: odoo:14.0
+    depends_on:
+      - db
+    ports:
+      - "8069:8069"
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+
+
+
+ pas sur pour celui la
+
+
+pgadmin:
+
+
+   container_name: pgadmin_container
+
+
+   image: dpage/pgadmin4
+
+
+   environment:
+
+
+     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+
+
+     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+
+
+     PGADMIN_CONFIG_SERVER_MODE: 'False'
+
+
+   volumes:
+
+
+      - pgadmin:/var/lib/pgadmin
+
+
+
+
+
+
+   ports:
+
+
+     - "${PGADMIN_PORT:-5050}:80"
+
+
+   networks:
+
+
+     - postgres
+
+
+   restart: unless-stopped
+
+
