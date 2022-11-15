@@ -1,3 +1,7 @@
+#   RAPPORT DEVOPS
+
+## 1/ Conteneurisation de l’application web 
+
 D’abord, on crée un réseau docker pour l’entreprise : 	
 docker network create IC-GROUP
 
@@ -30,7 +34,7 @@ docker run --network=IC-GROUP -p 8080:80 ic-webapp
 
 
 
-2.
+## 2/ Docker Registry
 On crée un registre privé pour notre réseau.
 Apparemment il faut plus aller vers 4001:5000		 	 	 		
 
@@ -47,11 +51,14 @@ docker run -d --net IC-GROUP -p 8082:80 -e REGISTRY_URL=http://registry-ic:80 -e
 ![image](https://user-images.githubusercontent.com/74649986/201880843-a763f1be-e3dc-4d54-9d51-97c43dd503fe.png)
 
 Puis on le push sur docker Hub.
+
 ![image](https://user-images.githubusercontent.com/74649986/201880927-cf2a2717-07c8-4dda-a5e3-28a606305e00.png)
+
 Dans notre compte docekrhub, on constate que l’image a bien été push
+
 ![image](https://user-images.githubusercontent.com/74649986/201881024-7b87e056-4580-4ec9-9ee3-6701ef8abc57.png)
 
-3.
+## 3/ docker-compose
 
 Docker-compose.yml:
 
