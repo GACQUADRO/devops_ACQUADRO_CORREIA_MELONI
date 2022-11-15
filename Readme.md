@@ -14,7 +14,7 @@ Ensuite nous allons devoir build une image ic-webapp avec des paramètres qui no
 
 
 
-FROM python:3.6-alpine
+FROM python:3.6-alpine \
 run  pip install flask==1.1.2
 ADD . /opt/
 WORKDIR /opt
