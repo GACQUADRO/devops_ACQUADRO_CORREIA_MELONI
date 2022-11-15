@@ -4,6 +4,14 @@ SIMON MELONI | GREGOIRE ACQUADRO | SIMON CORREIA
 
 ## 1/ Conteneurisation de l’application web 
 
+Tout d'abord nous allons installer docker
+
+**apt-get install docker.io**
+
+Et nous allons aussi cloner le git du projet
+
+**git clone https://github.com/eazytraining/docker-exams-1.git**
+
 Durant ce projet nous travaillons pour l'entreprise IC-GROUP, la première étape sera donc de créer le network :
 
 **docker network create IC-GROUP**
@@ -133,6 +141,5 @@ pgadmin:
 
 
    restart: unless-stopped
-
 
 
