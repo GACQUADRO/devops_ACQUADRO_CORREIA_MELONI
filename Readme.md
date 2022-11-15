@@ -70,7 +70,7 @@ On se login au dockerhub avant de pouvoir push
 **docker login**
 
 
-Enfin on peut push, en commencant part tag puis docker push
+Enfin on peut push, en commençant part tag puis docker push
 
 ![image](https://user-images.githubusercontent.com/74649986/201880927-cf2a2717-07c8-4dda-a5e3-28a606305e00.png)
 
