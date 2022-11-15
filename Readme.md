@@ -84,7 +84,8 @@ On crée le fichier docker compose : \
 nano Docker-compse.yml\
 
 Puis on y met les fichiers que l’on veut:\
-Docker-compose.yml:\
+Docker-compose.yml:
+
 version: '3.3'\
 services:\
     pgadmin:
